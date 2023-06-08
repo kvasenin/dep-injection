@@ -3,12 +3,13 @@ import IoCContainer from 'ioc-lite';
 import { Logger } from '../services/logger';
 import { HTTP } from '../services/http';
 import { Users } from '../services/users';
+import type { ApiConfig } from '../types';
 
 type IOCResources = {
   http: typeof HTTP;
   logger: typeof Logger;
   users: typeof Users;
-  apiConfig: any;
+  apiConfig: ApiConfig;
 }
 
 // using a generic type allows you to control which resources can be registered.
