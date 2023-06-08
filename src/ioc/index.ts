@@ -4,9 +4,16 @@ import { Logger } from '../services/logger';
 import { HTTP } from '../services/http';
 import { Users } from '../services/users';
 
+type IOCResources = {
+  http: typeof HTTP;
+  logger: typeof Logger;
+  users: typeof Users;
+  apiConfig: any;
+}
+
 // using a generic type allows you to control which resources can be registered.
-export const createIoCContainer = () =>  {
-  const ioc = new IoCContainer();
+export const createIoCContainer = ()  =>  {
+  const ioc = new IoCContainer<IOCResources>();
   // you can register some resources right now below...
   ioc.registerClass('http', HTTP);
   ioc.registerClass('logger', Logger);
